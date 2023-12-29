@@ -10,7 +10,7 @@ function NewTask({ position }) {
       {addnew ? (
         <div className="flex w-full gap-4 items-end">
           <input
-            className="border-b-2 text-lg placeholder:text-sm outline-none outline-0 px-2 md:px-4 bg-transparent border-black flex-1"
+            className="border-b-2 text-lg placeholder:text-sm outline-none outline-0 px-2 md:px-4 rounded-none bg-transparent border-black flex-1"
             placeholder="Enter task details"
           />
           <div className="flex flex-col md:flex-row gap-2">

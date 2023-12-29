@@ -8,7 +8,7 @@ function Task() {
   return (
     <>
       {showmodal && (
-        <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center">
+        <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center">
           <div
             onClick={modal}
             className="bg-black bg-opacity-50 h-full w-full absolute cursor-default"
