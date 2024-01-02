@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import NewTask from "../components/NewTask";
 import Task from "../components/Task";
 import Nav from "../components/Nav";
@@ -26,7 +26,7 @@ function Home() {
           Nothing to see here yet
         </div> */}
           <div className="border border-[#CFCFCF} w-full p-4 rounded-xl shadow-inner min-h-[50%] grid md:grid-cols-2 place-items-center lg:grid-cols-3 gap-5">
-            {tasklist.slice(-6).map((task) => {
+            {tasklist.slice(-5).map((task) => {
               return (
                 <Task
                   title={task.title}
