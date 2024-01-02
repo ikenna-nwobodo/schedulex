@@ -1,13 +1,74 @@
 import React, { useState } from "react";
+import { toast } from "react-toastify";
 
-function Task({ title, time, status }) {
+function Task({ id, title, time, status }) {
   const [showmodal, setmodal] = useState(false);
   const modal = () => {
     setmodal(!showmodal);
   };
-  const complete = () => {
-    status = "Completed";
-    console.log(status);
+  const complete = async (id) => {
+    var updatestatus = "Completed";
+    const newData = {
+      id: id,
+      title: title,
+      date: time,
+      status: updatestatus,
+    };
+    const update = await fetch(
+      `https://schedulex-53f9f-default-rtdb.firebaseio.com/tasks/${id}.json`,
+      { method: "PUT", body: JSON.stringify(newData) }
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        modal();
+      });
+    if (!update) {
+      toast.success("Task completed🥳");
+    } else {
+      toast.error("Problem dey o");
+    }
+    console.log(newData);
+  };
+  const iprogress = async (id) => {
+    var updatestatus = "In-Progress";
+    const newData = {
+      id: id,
+      title: title,
+      date: time,
+      status: updatestatus,
+    };
+    const update = await fetch(
+      `https://schedulex-53f9f-default-rtdb.firebaseio.com/tasks/${id}.json`,
+      { method: "PUT", body: JSON.stringify(newData) }
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        modal();
+      });
+    if (!update) {
+      toast.success("Task started💪🏽");
+    } else {
+      toast.error("Problem dey o");
+    }
+    console.log(newData);
+  };
+  const ondelete = async (id) => {
+    if (window.confirm("You sure? This can't be undone.")) {
+      const del = await fetch(
+        `https://schedulex-53f9f-default-rtdb.firebaseio.com/tasks/${id}.json`,
+        { method: "DELETE", ContentType: "application/json" }
+      )
+        .then((res) => res.json())
+        .then((data) => console.log(data));
+      if (!del) {
+        toast.info("Task deleted🗑️");
+      } else {
+        toast.error("Problem dey o");
+      }
+      console.log(id);
+    }
   };
   return (
     <>
@@ -20,7 +81,7 @@ function Task({ title, time, status }) {
           <div className="bg-white w-[70%] lg:w-[30%] flex flex-col gap-8 p-4 rounded-lg shadow-md z-30">
             <div>
               <span className="text-xs font-normal text-neutral-500">
-                Created at {time}
+                Created {time}
               </span>
               <div className="flex items-center justify-between">
                 <p className="text-xl font-semibold">{title}</p>
@@ -34,14 +95,20 @@ function Task({ title, time, status }) {
             <div className="flex md:flex-row flex-col gap-4">
               <p
                 className="text-sm bg-teal-800 hover:bg-opacity-85 text-white text-center md:w-max px-4 py-2 cursor-pointer rounded-md"
-                onClick={complete}
+                onClick={() => complete(id)}
               >
                 Mark as complete
               </p>
-              <p className="text-sm bg-cyan-800 hover:bg-opacity-85 text-white text-center md:w-max px-4 py-2 cursor-pointer rounded-md">
+              <p
+                onClick={() => iprogress(id)}
+                className="text-sm bg-cyan-800 hover:bg-opacity-85 text-white text-center md:w-max px-4 py-2 cursor-pointer rounded-md"
+              >
                 Start
               </p>
-              <p className="text-sm bg-red-800 hover:bg-opacity-85 text-white text-center md:w-max px-4 py-2 cursor-pointer rounded-md">
+              <p
+                onClick={() => ondelete(id)}
+                className="text-sm bg-red-800 hover:bg-opacity-85 text-white text-center md:w-max px-4 py-2 cursor-pointer rounded-md"
+              >
                 Delete
               </p>
             </div>

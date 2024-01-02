@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+import { toast } from "react-toastify";
 
 function NewTask({ position }) {
   const [addnew, setaddnew] = useState(false);
-  const [data, setData] = useState({ title: "", date: "", status: "" });
+  const [data, setData] = useState({ db: "", title: "", date: "", status: "" });
   const showadd = () => {
     setaddnew(!addnew);
   };
@@ -16,19 +17,25 @@ function NewTask({ position }) {
       [key]: value,
     }));
   };
-
-  const addTask = async () => {
-    console.log(data);
-    const res = await fetch(
-      "https://schedulex-53f9f-default-rtdb.firebaseio.com/add.json",
-      {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: { "Content-Type": "application/json" },
+  const addTask = async (db) => {
+    if (data.title === "") {
+      toast.error("Enter a task🧍🏽");
+    } else {
+      const res = await fetch(
+        "https://schedulex-53f9f-default-rtdb.firebaseio.com/tasks.json",
+        {
+          method: "POST",
+          body: JSON.stringify(data),
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+      if (res) {
+        toast.success("Task created🙃");
+        setData({ title: "", date: "", status: "" });
+        showadd();
+      } else {
+        toast.error("An error occurred😣. Please try again.");
       }
-    );
-    if (res) {
-      console.log(res.json());
     }
   };
   return (

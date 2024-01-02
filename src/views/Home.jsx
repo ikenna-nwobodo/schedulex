@@ -1,19 +1,40 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import NewTask from "../components/NewTask";
 import Task from "../components/Task";
 import Nav from "../components/Nav";
-import tasklist from "../tasklist";
+// import tasklist from "../tasklist";
+// import app from "../firebase";
 
 function Home() {
-  // useEffect(() => {
-  //   const data = fetch(
-  //     "https://schedulex-53f9f-default-rtdb.firebaseio.com/add.json",
-  //     {
-  //       method: "GET",
-  //     }
-  //   );
-  //   console.log(data);
-  // }, []);
+  const [tasks, setTasks] = useState({});
+  useEffect(() => {
+    // app.on("value", (snapshots) => {
+    //   if (snapshots.val() !== null) {
+    //     setTasks(...snapshots);
+    //   } else {
+    //     setTasks({});
+    //   }
+    // });
+    // return () => {
+    //   setTasks({});
+    // };
+    fetchData();
+  });
+  const fetchData = async () => {
+    await fetch(
+      "https://schedulex-53f9f-default-rtdb.firebaseio.com/tasks.json"
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setTasks({ ...data });
+      });
+    // if (data) {
+    //   console.log(data.json());
+    //   setTasks(data);
+    // } else {
+    //   console.log("no go");
+    // }
+  };
   return (
     <>
       <Nav />
@@ -26,7 +47,31 @@ function Home() {
           Nothing to see here yet
         </div> */}
           <div className="border border-[#CFCFCF} w-full p-4 rounded-xl shadow-inner min-h-[50%] grid md:grid-cols-2 place-items-center lg:grid-cols-3 gap-5">
-            {tasklist.slice(-5).map((task) => {
+            {Object.keys(tasks).length === 0 ? (
+              <p className="font-medium tex-md text-opacity-70 text-neutral-500">Nothing to see here yet</p>
+            ) : (
+              Object.keys(tasks).map((id) => {
+                return (
+                  <Task
+                    id={id}
+                    title={tasks[id].title}
+                    time={tasks[id].date}
+                    status={tasks[id].status}
+                  />
+                );
+              })
+            )}
+            {/* {Object.keys(tasks).map((id) => {
+              return (
+                <Task
+                  id={id}
+                  title={tasks[id].title}
+                  time={tasks[id].date}
+                  status={tasks[id].status}
+                />
+              );
+            })} */}
+            {/* {tasklist.slice(-5).map((task) => {
               return (
                 <Task
                   title={task.title}
@@ -34,7 +79,7 @@ function Home() {
                   status={task.status}
                 />
               );
-            })}
+            })} */}
           </div>
           <a
             href="tasks"
