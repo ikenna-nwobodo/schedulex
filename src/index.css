@@ -6,6 +6,7 @@
 * {
   font-family: "DM Sans", sans-serif;
   transition: all ease-in-out 400ms;
+  background-color: #f3f3f3;
 }
 body {
   margin: 0;
