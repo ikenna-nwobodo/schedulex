@@ -8,7 +8,7 @@ import Login from "./views/Login";
 function App() {
   return (
     <BrowserRouter>
-      <div className="bg-[#F3F3F3] h-screen min-h-screen flex flex-col items-center selection:bg-black selection:text-white">
+      <div className="bg-[#F3F3F3] bg-mobile md:bg-min bg-cover h-screen min-h-screen flex flex-col items-center selection:bg-black selection:text-white">
         {/* <Nav /> */}
         <Routes>
           <Route index element={<Login />} />

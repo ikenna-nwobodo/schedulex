@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import NewTask from "../components/NewTask";
 import Task from "../components/Task";
 import Nav from "../components/Nav";
+import tasklist from "../tasklist";
 
 function Home() {
+  // useEffect(() => {
+  //   const data = fetch(
+  //     "https://schedulex-53f9f-default-rtdb.firebaseio.com/add.json",
+  //     {
+  //       method: "GET",
+  //     }
+  //   );
+  //   console.log(data);
+  // }, []);
   return (
     <>
       <Nav />
@@ -16,11 +26,15 @@ function Home() {
           Nothing to see here yet
         </div> */}
           <div className="border border-[#CFCFCF} w-full p-4 rounded-xl shadow-inner min-h-[50%] grid md:grid-cols-2 place-items-center lg:grid-cols-3 gap-5">
-            <Task />
-            <Task />
-            <Task />
-            <Task />
-            <Task />
+            {tasklist.slice(-6).map((task) => {
+              return (
+                <Task
+                  title={task.title}
+                  time={task.time}
+                  status={task.status}
+                />
+              );
+            })}
           </div>
           <a
             href="tasks"
