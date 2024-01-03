@@ -39,11 +39,12 @@ code {
   background-color: rgba(21, 128, 61, 0.2);
 }
 
-/* .Toastify__toast-container {
+.Toastify__toast-container {
   width: max-content !important;
-} */
+  padding: 1rem !important;
+}
 .Toastify__toast {
-  margin-bottom: 0rem !important;
+  margin-bottom: 1rem !important;
   border-radius: 0.6rem !important;
   min-height: max-content !important;
 }
