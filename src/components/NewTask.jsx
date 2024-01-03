@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
+import "animate.css";
 
 function NewTask({ position }) {
   const [addnew, setaddnew] = useState(false);
@@ -30,7 +31,7 @@ function NewTask({ position }) {
         }
       );
       if (res) {
-        toast.success("Task created🙃");
+        toast("Task created", { icon: "🥳" });
         setData({ title: "", date: "", status: "" });
         showadd();
       } else {

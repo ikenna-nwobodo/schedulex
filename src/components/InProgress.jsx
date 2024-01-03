@@ -20,19 +20,21 @@ function InProgress() {
       Nothing to see here yet
     </p>
   ) : (
-    Object.keys(tasks).map((id) => {
-      if (tasks[id].status === "In-Progress") {
-        return (
-          <Task
-            id={id}
-            title={tasks[id].title}
-            time={tasks[id].date}
-            status={tasks[id].status}
-          />
-        );
-      }
-      return null;
-    })
+    Object.keys(tasks)
+      .reverse()
+      .map((id) => {
+        if (tasks[id].status === "In-Progress") {
+          return (
+            <Task
+              id={id}
+              title={tasks[id].title}
+              time={tasks[id].date}
+              status={tasks[id].status}
+            />
+          );
+        }
+        return null;
+      })
   );
 }
 

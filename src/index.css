@@ -29,11 +29,25 @@ code {
   color: rgb(234 179 8);
   background-color: rgba(234, 179, 8, 0.2);
 }
-.In-Progress {
+.In-Progress,
+.noitf {
   color: rgb(20 184 166);
   background-color: rgba(20, 184, 166, 0.2);
 }
 .Completed {
   color: rgb(21 128 61);
   background-color: rgba(21, 128, 61, 0.2);
+}
+
+.Toastify__toast-container {
+  width: max-content !important;
+}
+.Toastify__toast {
+  margin-bottom: 0rem !important;
+  border-radius: 0.6rem !important;
+  min-height: max-content !important;
+}
+.Toastify__toast-body {
+  padding: 4px !important;
+  font-size: 15px;
 }
