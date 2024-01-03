@@ -20,7 +20,6 @@ function Task({ id, title, time, status }) {
     )
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         modal();
       });
     if (!update) {
@@ -44,7 +43,6 @@ function Task({ id, title, time, status }) {
     )
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         modal();
       });
     if (!update) {
@@ -93,24 +91,54 @@ function Task({ id, title, time, status }) {
               </div>
             </div>
             <div className="flex md:flex-row flex-col gap-4">
-              <p
-                className="text-sm bg-teal-800 hover:bg-opacity-85 text-white text-center md:w-max px-4 py-2 cursor-pointer rounded-md"
-                onClick={() => complete(id)}
-              >
-                Mark as complete
-              </p>
-              <p
-                onClick={() => iprogress(id)}
-                className="text-sm bg-cyan-800 hover:bg-opacity-85 text-white text-center md:w-max px-4 py-2 cursor-pointer rounded-md"
-              >
-                Start
-              </p>
-              <p
-                onClick={() => ondelete(id)}
-                className="text-sm bg-red-800 hover:bg-opacity-85 text-white text-center md:w-max px-4 py-2 cursor-pointer rounded-md"
-              >
-                Delete
-              </p>
+              {status === "Pending" && (
+                <>
+                  <p
+                    className="text-sm bg-teal-800 hover:bg-opacity-85 text-white text-center md:w-max px-4 py-2 cursor-pointer rounded-md"
+                    onClick={() => complete(id)}
+                  >
+                    Mark as complete
+                  </p>
+                  <p
+                    onClick={() => iprogress(id)}
+                    className="text-sm bg-cyan-800 hover:bg-opacity-85 text-white text-center md:w-max px-4 py-2 cursor-pointer rounded-md"
+                  >
+                    Start
+                  </p>
+                  <p
+                    onClick={() => ondelete(id)}
+                    className="text-sm bg-red-800 hover:bg-opacity-85 text-white text-center md:w-max px-4 py-2 cursor-pointer rounded-md"
+                  >
+                    Delete
+                  </p>
+                </>
+              )}
+              {status === "In-Progress" && (
+                <>
+                  <p
+                    className="text-sm bg-teal-800 hover:bg-opacity-85 text-white text-center md:w-max px-4 py-2 cursor-pointer rounded-md"
+                    onClick={() => complete(id)}
+                  >
+                    Mark as complete
+                  </p>
+                  <p
+                    onClick={() => ondelete(id)}
+                    className="text-sm bg-red-800 hover:bg-opacity-85 text-white text-center md:w-max px-4 py-2 cursor-pointer rounded-md"
+                  >
+                    Delete
+                  </p>
+                </>
+              )}
+              {status === "Completed" && (
+                <>
+                  <p
+                    onClick={() => ondelete(id)}
+                    className="text-sm bg-red-800 hover:bg-opacity-85 text-white text-center md:w-max px-4 py-2 cursor-pointer rounded-md"
+                  >
+                    Delete
+                  </p>
+                </>
+              )}
             </div>
           </div>
         </div>
