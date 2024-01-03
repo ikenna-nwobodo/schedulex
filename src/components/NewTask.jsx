@@ -44,7 +44,7 @@ function NewTask({ position }) {
       {addnew ? (
         <div className="flex w-full gap-4 items-end">
           <input
-            className="border-b-2 text-lg placeholder:text-sm outline-none outline-0 px-2 md:px-4 rounded-none bg-transparent border-black flex-1"
+            className="border-b-2 text-lg placeholder:text-sm outline-none outline-0 px-2 py-2 md:px-4 rounded-none bg-transparent border-black flex-1"
             placeholder="Enter task details"
             value={data.title}
             onChange={(event) => handleInput("title", event.target.value)}

@@ -59,9 +59,9 @@ function Task({ id, title, time, status }) {
         { method: "DELETE", ContentType: "application/json" }
       )
         .then((res) => res.json())
-        .then((data) => console.log(data));
+        .then((data) => modal());
       if (!del) {
-        toast.info("Task deleted🗑️");
+        toast("Task deleted 🗑️");
       } else {
         toast.error("Problem dey o");
       }

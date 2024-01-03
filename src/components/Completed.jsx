@@ -16,7 +16,7 @@ function Completed() {
       });
   };
   return Object.keys(tasks).length === 0 ? (
-    <p className="font-medium tex-md text-opacity-70 text-neutral-500">
+    <p className="font-medium text-md text-left w-full text-opacity-70 text-neutral-500">
       Nothing to see here yet
     </p>
   ) : (

@@ -15,7 +15,6 @@ function App() {
   return (
     <BrowserRouter>
       <div className="bg-[#F3F3F3] min-h-screen flex flex-col items-center selection:bg-black selection:text-white">
-        {/* <Nav /> */}
         <ToastContainer
           position="bottom-center"
           autoClose={1200}
