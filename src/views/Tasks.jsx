@@ -41,7 +41,7 @@ function Tasks() {
             <NewTask position="end" />
           </div>
         </div>
-        <div className="border border-[#CFCFCF} w-full p-4 rounded-xl shadow-inner min-h-[50%] grid md:grid-cols-2 h-max lg:grid-cols-3 gap-3.5">
+        <div className="border border-[#CFCFCF} w-full p-4 rounded-xl shadow-inner flex-1 min-h-[50%] flex flex-col md:grid grid-cols-1 md:place-items-center md:grid-cols-2 lg:grid-cols-3 gap-3.5">
           <TabContent id="tab1" activeTab={activeTab}>
             <Pending />
           </TabContent>

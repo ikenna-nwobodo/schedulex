@@ -25,8 +25,8 @@ function Home() {
         <div className="w-full md:w-10/12">
           <NewTask position="center" />
         </div>
-        <div className="w-full flex bg-green-700 flex-col gap-4 h-3/5 items-end">
-          <div className="border border-[#CFCFCF} bg-red-700 w-full p-4 rounded-xl shadow-inner flex-1 min-h-[50%] flex flex-col md:grid grid-cols-1 md:place-items-center md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="w-full flex flex-col gap-4 h-3/5 items-end">
+          <div className="border border-[#CFCFCF} w-full p-4 rounded-xl shadow-inner flex-1 min-h-[50%] flex flex-col md:grid grid-cols-1 md:place-items-center md:grid-cols-2 lg:grid-cols-3 gap-5">
             {Object.keys(tasks).length === 0 ? (
               <p className="font-medium tex-md text-opacity-70 text-neutral-500">
                 Nothing to see here yet
