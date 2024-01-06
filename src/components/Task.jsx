@@ -89,7 +89,7 @@ function Task({ id, title, time, status }) {
                 </span>
               </div>
               <div className="flex items-center justify-between gap-2">
-                <p className="text-xl font-medium md:font-semibold w-9/12">
+                <p className="text-base md:text-xl font-medium md:font-semibold">
                   {title}
                 </p>
               </div>
