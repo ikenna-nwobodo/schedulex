@@ -77,7 +77,7 @@ function Task({ id, title, time, status }) {
             className="bg-black bg-opacity-50 h-full w-full absolute cursor-default"
           ></div>
           <div className="bg-white w-[70%] lg:w-[30%] flex flex-col gap-8 p-4 rounded-lg shadow-md z-30">
-            <div>
+            <div className="flex flex-col gap-6">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-normal text-neutral-500">
                   Created {time}
