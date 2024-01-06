@@ -78,16 +78,20 @@ function Task({ id, title, time, status }) {
           ></div>
           <div className="bg-white w-[70%] lg:w-[30%] flex flex-col gap-8 p-4 rounded-lg shadow-md z-30">
             <div>
-              <span className="text-xs font-normal text-neutral-500">
-                Created {time}
-              </span>
               <div className="flex items-center justify-between">
-                <p className="text-xl font-semibold">{title}</p>
+                <span className="text-xs font-normal text-neutral-500">
+                  Created {time}
+                </span>
                 <span
-                  className={`text-xs font-medium bg-opacity-15 py-1 px-2 rounded-xl ${status}`}
+                  className={`md:text-xs text-[10px] text-center font-medium bg-opacity-15 py-1 px-2 rounded-xl ${status}`}
                 >
                   {status}
                 </span>
+              </div>
+              <div className="flex items-center justify-between gap-2">
+                <p className="text-xl font-medium md:font-semibold w-9/12">
+                  {title}
+                </p>
               </div>
             </div>
             <div className="flex md:flex-row flex-col gap-4">
@@ -146,11 +150,13 @@ function Task({ id, title, time, status }) {
 
       <div
         onClick={modal}
-        className="bg-white w-full h-[70px] flex items-center justify-between p-4 rounded-lg cursor-pointer shadow-xl hover:shadow-md"
+        className="bg-white w-full h-[70px] flex items-center gap-2 justify-between p-4 rounded-lg cursor-pointer shadow-xl hover:shadow-md"
       >
-        <p className="text-xl font-semibold">{title}</p>
+        <p className="text-xl w-9/12 font-medium md:font-semibold truncate">
+          {title}
+        </p>
         <span
-          className={`text-xs bg-red-100 font-medium bg-opacity-15 py-1 px-2 rounded-xl ${status}`}
+          className={`md:text-xs text-[10px] w-3/12 bg-red-100 text-center font-medium bg-opacity-15 py-1 px-2 rounded-xl ${status}`}
         >
           {status}
         </span>
