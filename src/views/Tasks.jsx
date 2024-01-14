@@ -7,6 +7,7 @@ import Tab from "../components/Tab";
 import TabContent from "../components/TabContent";
 import InProgress from "../components/InProgress";
 import Completed from "../components/Completed";
+import { motion } from "framer-motion";
 // import tasklist from "../tasklist";
 
 function Tasks() {
@@ -15,7 +16,13 @@ function Tasks() {
   return (
     <>
       <Nav />
-      <div className="w-11/12 md:w-10/12 flex flex-col gap-10">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 1, ease: "easeOut" }}
+        className="w-11/12 md:w-10/12 flex flex-col gap-10"
+      >
         <div className="flex flex-wrap-reverse gap-4 w-full justify-between items-center">
           <ul className="flex flex-wrap gap-3 text-sm">
             <Tab
@@ -52,7 +59,7 @@ function Tasks() {
             <Completed />
           </TabContent>
         </div>
-      </div>
+      </motion.div>
     </>
   );
 }

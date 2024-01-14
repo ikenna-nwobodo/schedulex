@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import NewTask from "../components/NewTask";
 import Task from "../components/Task";
 import Nav from "../components/Nav";
+import { motion } from "framer-motion";
 
 function Home() {
   const [tasks, setTasks] = useState([]);
@@ -21,7 +22,14 @@ function Home() {
   return (
     <>
       <Nav />
-      <div className="w-11/12 md:w-10/12 flex flex-col gap-10 items-center h-4/5">
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 1, ease: "easeOut" }}
+        className="w-11/12 md:w-10/12 flex flex-col gap-10 items-center h-4/5"
+      >
         <div className="w-full md:w-10/12">
           <NewTask position="center" />
         </div>
@@ -54,7 +62,7 @@ function Home() {
             All Tasks
           </a>
         </div>
-      </div>
+      </motion.div>
     </>
   );
 }
